@@ -1,32 +1,24 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import localFont from "next/font/local";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import ChatWidget from "@/components/ChatWidget";
 
-const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geist = Geist({ variable: "--font-sans", subsets: ["latin"], display: "swap" });
+const geistMono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "AXIOM — AI-Crafted Digital Experiences",
+  title: "AXIOM — Experiencias Digitales con IA",
   description:
-    "We build next-generation websites powered by artificial intelligence. Stunning animations, elite performance, built to convert.",
-  keywords: ["AI websites", "web design", "animated websites", "AI agency"],
-  openGraph: {
-    title: "AXIOM — AI-Crafted Digital Experiences",
-    description: "Next-generation websites powered by AI.",
-    type: "website",
-  },
+    "Construimos sitios web de nueva generación potenciados por inteligencia artificial. Animaciones de élite, rendimiento extremo.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geist.variable}`}>
+    <html lang="es" suppressHydrationWarning>
+      <body className={`${geist.variable} ${geistMono.variable} grain`}>
         <SmoothScroll>{children}</SmoothScroll>
+        <ChatWidget />
       </body>
     </html>
   );
